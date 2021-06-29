@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro&family=Pacifico&display=swap");
+$theme_color: #5eff86;
+$theme_bg: rgb(235, 235, 235);
+.super_center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.landing {
+  height: 100vh;
+  background: $theme_bg;
+}
+.landing_card {
+  background: white;
+  height: 100vh;
+}
+@media only screen and (max-width: 800px) {
+  .landing_card {
+    width: 100%;
+  }
+}
+.landing_header {
+  text-align: center;
+  h3 {
+    font-family: "Maven Pro", sans-serif;
+    color: rgb(80, 97, 97);
+  }
+}
+.landing_header_text {
+  color: $theme_color;
+  // font-family: "Dela Gothic One", cursive;
+  // font-family: "Kirang Haerang", cursive;
+  font-family: "Pacifico", cursive;
+  //   transition: 3s ease;
+  &:hover {
+    animation: font_blob 3s infinite;
+  }
+}
+
+@keyframes font_blob {
+  0% {
+    color: #00ff95;
+  }
+  25% {
+    color: #00b7ff;
+  }
+  50% {
+    color: #23e754;
+  }
+  100% {
+    color: #5eff86;
+  }
+}
+.landing_btns {
+  border-radius: 50px;
+  margin: 10px 20px;
+  border: 2px solid $theme_color;
+  padding: 10px 30px;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.theme_color {
+  background: $theme_color;
+  &:hover {
+    background: transparent;
+  }
+}
+.anti_theme_color {
+  background: transparent;
+  &:hover {
+    background: $theme_color;
+  }
+}
+
+//sign model starts
+.sign_modal_landing {
+  display: none;
+  position: fixed;
+  padding: 5vw;
+  max-width: 20vh;
+  min-width: 500px;
+  height: 20vw;
+  min-height: 300px;
+  background: rgb(255, 255, 255);
+  top: 50%;
+  left: 50%;
+  z-index: 22;
+
+  transform: translate(-50%, -50%);
+  box-shadow: 0px 0px 100px 100vw rgba(44, 42, 42, 0.438);
+  text-align: center;
+}
+//sign model ends
