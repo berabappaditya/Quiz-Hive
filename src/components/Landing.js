@@ -38,12 +38,23 @@ function Landing() {
   function handleClose(e) {
     setModal({ display: "none" });
   }
+
+  function handleSignOpen(e) {
+    e.preventDefault();
+    handleClose();
+    inModalOpen();
+  }
   return (
     <div className="landing">
       <div className="sign_modal_landing" style={modal}>
         <h5 className="mb-5">You don't have an account! create one</h5>
         <div className="landing_user_logs super_center">
-          <button className="landing_btns theme_color">Sign In</button>
+          <button
+            className="landing_btns theme_color"
+            onClick={(e) => handleSignOpen(e)}
+          >
+            Sign In
+          </button>
           <button
             className="landing_btns theme_color"
             onClick={(e) => handleClose(e)}

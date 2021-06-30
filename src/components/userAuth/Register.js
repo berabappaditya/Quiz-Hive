@@ -23,7 +23,7 @@ function Register({ upmodal, upModalClose }) {
     e.preventDefault();
     try {
       const sendTask = await axios.post(
-        "http://localhost:8080/userAuth/register",
+        "https://quizhive-backend.herokuapp.com/userAuth/register",
         {
           name: name,
           email: email,

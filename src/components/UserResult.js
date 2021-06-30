@@ -19,7 +19,7 @@ function UserResult() {
   async function handleLboard(e) {
     try {
       const sendReg = await axios.post(
-        "http://localhost:8080/lboard/postleader",
+        "https://quizhive-backend.herokuapp.com/lboard/postleader",
         {
           name: uname,
           score: count,

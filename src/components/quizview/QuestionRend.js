@@ -15,7 +15,9 @@ function QuestionRend({ setCorrectAnsw, setUserAnsw }) {
 
   async function fetchQuestion() {
     try {
-      const questions = await axios.get("http://localhost:8080/quiz/getQuiz");
+      const questions = await axios.get(
+        "https://quizhive-backend.herokuapp.com/quiz/getQuiz"
+      );
       const quizArray = questions.data.result;
       SetQuizes(quizArray);
     } catch (e) {

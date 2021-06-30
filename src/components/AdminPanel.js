@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
 
 function AdminPanel() {
   const [question, setQuestion] = useState("");
@@ -12,19 +15,34 @@ function AdminPanel() {
   async function submitQuestion(e) {
     let correctAnsArr = [];
     correctAnsArr.splice(0, 0, answer1, answer2, answer3, answer4);
-    try {
-      const sendData = await axios.post("http://localhost:8080/quiz/postQuiz", {
-        category: "Science: Computers",
-        type: "multiple",
-        difficulty: "Medium",
-        question: question,
-        correct_answer: correct_answer,
-        answers: correctAnsArr,
+    if (correctAnsArr.includes(correct_answer)) {
+      try {
+        const sendData = await axios.post(
+          "https://quizhive-backend.herokuapp.com/quiz/postQuiz",
+          {
+            category: "Science: Computers",
+            type: "multiple",
+            difficulty: "Medium",
+            question: question,
+            correct_answer: correct_answer,
+            answers: correctAnsArr,
+          }
+        );
+        console.log(sendData);
+        alert("question is successfully added to database");
+      } catch (e) {
+        console.error(e.message);
+      }
+    } else {
+      toast.error("Any Answer not matched with correct answer", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
-      console.log(sendData);
-      alert("question is successfully added to database");
-    } catch (e) {
-      console.error(e.message);
     }
   }
 
@@ -36,10 +54,15 @@ function AdminPanel() {
     <div className="d-flex align-items-center justify-content-center">
       <div style={qfrom}>
         <h2>Add question To database</h2>
+        <p>
+          Note: correct should match one of the four anwers (you should follow
+          exact case of answers)
+        </p>
         <label htmlFor="question">Enter question:</label> <br />
         <input
           type="text"
           name="question"
+          className="form-control"
           placeholder="Enter question"
           onChange={(e) => {
             setQuestion(e.target.value);
@@ -51,6 +74,7 @@ function AdminPanel() {
         <input
           type="text"
           name="answers"
+          className="form-control"
           placeholder="Enter  answer1"
           onChange={(e) => {
             setAnswer1(e.target.value);
@@ -60,6 +84,7 @@ function AdminPanel() {
         <input
           type="text"
           name="answers"
+          className="form-control"
           placeholder="Enter answer2"
           onChange={(e) => {
             setAnswer2(e.target.value);
@@ -69,6 +94,7 @@ function AdminPanel() {
         <input
           type="text"
           name="answers"
+          className="form-control"
           placeholder="Enter answer3"
           onChange={(e) => {
             setAnswer3(e.target.value);
@@ -78,6 +104,7 @@ function AdminPanel() {
         <input
           type="text"
           name="answers"
+          className="form-control"
           placeholder="Enter  answer4"
           onChange={(e) => {
             setAnswer4(e.target.value);
@@ -89,6 +116,7 @@ function AdminPanel() {
         <input
           type="text"
           name="correct_answer"
+          className="form-control"
           placeholder="Enter correct answer"
           onChange={(e) => {
             setCorrectAnsw(e.target.value);

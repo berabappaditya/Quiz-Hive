@@ -8,7 +8,7 @@ function ScoreBoard() {
   async function getLeaderboard() {
     try {
       const leaderData = await axios.get(
-        "http://localhost:8080/lboard/getleader"
+        "https://quizhive-backend.herokuapp.com/lboard/getleader"
       );
       const leaderArray = leaderData.data.result;
       setLboard(leaderArray);
