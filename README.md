@@ -1,4 +1,4 @@
-# see Live [website](https://quiz-hive.netlify.app/#/)
+# See Live [website](https://quiz-hive.netlify.app/#/)
 
 
 
